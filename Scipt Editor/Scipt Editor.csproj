@@ -50,6 +50,7 @@
     <Compile Include="Editor\Configs.cs" />
     <Compile Include="Editor\Document.cs" />
     <Compile Include="Editor\EditorManager.cs" />
+    <Compile Include="Editor\Shortcuts.cs" />
     <Compile Include="Exceptions\Exceptions.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Form1.cs">

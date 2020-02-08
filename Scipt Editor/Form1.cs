@@ -18,8 +18,26 @@ namespace Scipt_Editor
         {
             InitializeComponent();
 
+            EditorManager.Instance.TabControl = tabControl1;
+            fontSelector.Items.AddRange(new object[] { "Arial", "Calibri", "Times New Roman", "Consolas", "Monotype" });
+            fontSelector.SelectedIndex = 0;
+            fontSizeSelector.Items.AddRange(new object[] { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36 });
+            fontSizeSelector.SelectedIndex = 0;
+
             tabControl1.Selected += TabControl1OnSelected;
             tabControl1.ControlAdded += TabControl1OnControlAdded;
+            fontSizeSelector.SelectedIndexChanged += FontSizeSelectorOnSelectedIndexChanged;
+            fontSelector.SelectedIndexChanged += FontSelectorOnSelectedIndexChanged;
+        }
+
+        private void FontSelectorOnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            EditorManager.Instance.UpdateFont(fontSelector.SelectedText, (int)fontSizeSelector.SelectedItem);
+        }
+
+        private void FontSizeSelectorOnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            EditorManager.Instance.UpdateFont(fontSelector.SelectedText, (int) fontSizeSelector.SelectedItem);
         }
 
         private void TabControl1OnControlAdded(object sender, ControlEventArgs e)
@@ -37,16 +55,12 @@ namespace Scipt_Editor
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var tabPage = new TabPageClosable("Untitled");
-            
-            EditorManager.Instance.CreateNewDocument(tabPage);
-
-            tabControl1.Controls.Add(tabPage);
+            EditorManager.Instance.CreateNewDocument();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControl1.Controls.Add(EditorManager.Instance.OpenDocument());
+            EditorManager.Instance.OpenDocument();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,12 +70,7 @@ namespace Scipt_Editor
 
         private void openFileButton_Click(object sender, EventArgs e)
         {
-            var doc = EditorManager.Instance.OpenDocument();
-
-            if (doc != null)
-            {
-                tabControl1.Controls.Add(EditorManager.Instance.OpenDocument());
-            }
+             EditorManager.Instance.OpenDocument();
         }
 
         private void saveFileButton_Click(object sender, EventArgs e)
@@ -77,6 +86,27 @@ namespace Scipt_Editor
         private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             EditorManager.Instance.SaveAs();
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+
+            Shortcuts.HandleShortcut(e.KeyData);
+        }
+
+
+        private void newFileButton_Click(object sender, EventArgs e)
+        {
+            EditorManager.Instance.CreateNewDocument();
+        }
+
+        ~Form1()
+        {
+            tabControl1.Selected -= TabControl1OnSelected;
+            tabControl1.ControlAdded -= TabControl1OnControlAdded;
+            fontSizeSelector.SelectedIndexChanged -= FontSizeSelectorOnSelectedIndexChanged;
+            fontSelector.SelectedIndexChanged -= FontSelectorOnSelectedIndexChanged;
         }
     }
 }

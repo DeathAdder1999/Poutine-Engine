@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace Scipt_Editor
         private string _extension;
         private string _name;
         private string _filePath;
+        private Font _font;
         private DocumentState _state = DocumentState.Latest;
         private readonly TabPageClosable _tab;
         private readonly RichTextBox _txtBox;
@@ -54,6 +56,17 @@ namespace Scipt_Editor
                 {
                     Open();
                 }
+            }
+        }
+
+        public Font Font
+        {
+            get => _font;
+            set
+            {
+                _font = value;
+
+                _txtBox.Font = Font;
             }
         }
 

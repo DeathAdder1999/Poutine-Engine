@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 using Scipt_Editor.Extensions;
 using Scipt_Editor.UI;
@@ -14,18 +17,22 @@ namespace Scipt_Editor.Editor
 
         public Document CurrentDocument { get; set; }
 
+        public TabControl TabControl { get; set; }
+
         private EditorManager()
         {
-
+            InitializeShortcuts();
         }
 
-        public void CreateNewDocument(TabPageClosable tab)
+        public void CreateNewDocument()
         {
+            var tab = new TabPageClosable("Untitled");
             tab.Controls.Add(new RichTextBox {Dock = DockStyle.Fill});
             _openedDocuments.Add(new Document(tab));
+            TabControl.Controls.Add(tab);
         }
 
-        public TabPageClosable OpenDocument()
+        public void OpenDocument()
         {
             var dlg = new OpenFileDialog {CheckFileExists = true, Multiselect = false};
 
@@ -37,7 +44,7 @@ namespace Scipt_Editor.Editor
                 if (openedDocument != null)
                 {
                     openedDocument.SetActive();
-                    return null;
+                    return;
                 }
 
                 var tab = new TabPageClosable(Path.GetFileName(dlg.FileName));
@@ -46,15 +53,18 @@ namespace Scipt_Editor.Editor
                 _openedDocuments.Add(new Document(tab, dlg.FileName));
 
 
-                return tab;
+                TabControl?.Controls.Add(tab);
             }
-
-            return null;
         }
 
 
         public void SaveAs()
         {
+            if (CurrentDocument == null)
+            {
+                return;
+            }
+
             var dlg = new SaveFileDialog();
             dlg.DefaultExt = ".gs";
 
@@ -76,6 +86,17 @@ namespace Scipt_Editor.Editor
             }
 
             return null;
+        }
+
+        public void UpdateFont(string fontName, int size)
+        {
+            CurrentDocument.Font = new Font(fontName, size);
+        }
+
+        private void InitializeShortcuts()
+        {
+            Shortcuts.AddShortcut(Keys.Control | Keys.S, new Shortcut("Save", () => CurrentDocument?.Save()));
+            Shortcuts.AddShortcut(Keys.Control | Keys.O, new Shortcut("Open", () => OpenDocument()));
         }
     }
 }
