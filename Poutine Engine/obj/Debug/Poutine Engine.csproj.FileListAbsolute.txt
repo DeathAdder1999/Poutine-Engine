@@ -1,0 +1,10 @@
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Poutine Engine\obj\Debug\Poutine Engine.csprojAssemblyReference.cache
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Poutine Engine\obj\Debug\Poutine_Engine.Form1.resources
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Poutine Engine\obj\Debug\Poutine_Engine.Properties.Resources.resources
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Poutine Engine\obj\Debug\Poutine Engine.csproj.GenerateResource.cache
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Poutine Engine\obj\Debug\Poutine Engine.csproj.CoreCompileInputs.cache
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Poutine Engine\bin\Debug\Poutine Engine.exe.config
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Poutine Engine\bin\Debug\Poutine Engine.exe
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Poutine Engine\bin\Debug\Poutine Engine.pdb
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Poutine Engine\obj\Debug\Poutine Engine.exe
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Poutine Engine\obj\Debug\Poutine Engine.pdb

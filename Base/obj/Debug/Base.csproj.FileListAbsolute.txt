@@ -1,0 +1,6 @@
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Base\bin\Debug\Base.dll
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Base\bin\Debug\Base.pdb
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Base\obj\Debug\Base.csprojAssemblyReference.cache
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Base\obj\Debug\Base.csproj.CoreCompileInputs.cache
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Base\obj\Debug\Base.dll
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Base\obj\Debug\Base.pdb

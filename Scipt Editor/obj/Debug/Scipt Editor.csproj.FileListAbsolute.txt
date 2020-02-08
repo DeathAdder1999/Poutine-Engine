@@ -1,0 +1,10 @@
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Scipt Editor\bin\Debug\Scipt Editor.exe.config
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Scipt Editor\bin\Debug\Scipt Editor.exe
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Scipt Editor\bin\Debug\Scipt Editor.pdb
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Scipt Editor\obj\Debug\Scipt Editor.csprojAssemblyReference.cache
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Scipt Editor\obj\Debug\Scipt_Editor.Form1.resources
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Scipt Editor\obj\Debug\Scipt_Editor.Properties.Resources.resources
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Scipt Editor\obj\Debug\Scipt Editor.csproj.GenerateResource.cache
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Scipt Editor\obj\Debug\Scipt Editor.csproj.CoreCompileInputs.cache
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Scipt Editor\obj\Debug\Scipt Editor.exe
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\Scipt Editor\obj\Debug\Scipt Editor.pdb

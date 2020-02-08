@@ -1,0 +1,6 @@
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\GameScript\bin\Debug\GameScript.dll
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\GameScript\bin\Debug\GameScript.pdb
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\GameScript\obj\Debug\GameScript.csprojAssemblyReference.cache
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\GameScript\obj\Debug\GameScript.csproj.CoreCompileInputs.cache
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\GameScript\obj\Debug\GameScript.dll
+C:\Users\Jahangir Gasimov\Documents\Visual Studio 2017\Projects\Poutine Engine\GameScript\obj\Debug\GameScript.pdb

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poutine Engine", "Poutine Engine\Poutine Engine.csproj", "{9492FF78-5A23-4553-856C-0DF2C998AB87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scipt Editor", "Scipt Editor\Scipt Editor.csproj", "{27139353-AE9F-43B2-80F3-3A5A5FB7C8AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameScript", "GameScript\GameScript.csproj", "{57D6E1EB-85B0-455B-87BE-6490B374AF2C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9492FF78-5A23-4553-856C-0DF2C998AB87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9492FF78-5A23-4553-856C-0DF2C998AB87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9492FF78-5A23-4553-856C-0DF2C998AB87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9492FF78-5A23-4553-856C-0DF2C998AB87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27139353-AE9F-43B2-80F3-3A5A5FB7C8AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27139353-AE9F-43B2-80F3-3A5A5FB7C8AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27139353-AE9F-43B2-80F3-3A5A5FB7C8AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27139353-AE9F-43B2-80F3-3A5A5FB7C8AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57D6E1EB-85B0-455B-87BE-6490B374AF2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57D6E1EB-85B0-455B-87BE-6490B374AF2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57D6E1EB-85B0-455B-87BE-6490B374AF2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57D6E1EB-85B0-455B-87BE-6490B374AF2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD00944C-2EC5-4C29-B113-032066ADCB04}
+	EndGlobalSection
+EndGlobal
