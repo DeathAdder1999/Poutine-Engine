@@ -96,7 +96,8 @@ namespace Scipt_Editor.Editor
         private void InitializeShortcuts()
         {
             Shortcuts.AddShortcut(Keys.Control | Keys.S, new Shortcut("Save", () => CurrentDocument?.Save()));
-            Shortcuts.AddShortcut(Keys.Control | Keys.O, new Shortcut("Open", () => OpenDocument()));
+            Shortcuts.AddShortcut(Keys.Control | Keys.O, new Shortcut("Open", OpenDocument));
+            Shortcuts.AddShortcut(Keys.Control | Keys.N, new Shortcut("New", CreateNewDocument));
         }
     }
 }
