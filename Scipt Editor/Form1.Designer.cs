@@ -69,6 +69,7 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
+            this.toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             // 
@@ -153,7 +154,7 @@
             this.fontSelector});
             this.toolStrip1.Location = new System.Drawing.Point(3, 49);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(496, 53);
+            this.toolStrip1.Size = new System.Drawing.Size(418, 53);
             this.toolStrip1.TabIndex = 1;
             // 
             // newFileButton
