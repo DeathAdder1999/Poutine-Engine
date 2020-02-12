@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SFML.System;
+﻿using System.Numerics;
 
 namespace Engine.Core
 {
     public class Transform
     {
-        public Vector2f Position { get; set; }
+        public Vector2 Position { get; set; }
         public float Rotation { get; set; }
         public Transform Parent { get; set; }
     }

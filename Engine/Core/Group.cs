@@ -3,41 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Engine.ErrorHandler.Exceptions;
+using Engine.ErrorHandler;
 
 namespace Engine.Core
 {
-    //TODO might want to change this into dictionary instead
-    public class Group<T>
+    public class Group<K, V>
     {
         public string Name { get; }
 
-        private List<T> _group = new List<T>();
+        private Dictionary<K, V> _group = new Dictionary<K, V>();
 
         public Group(string name)
         {
             Name = name;
         }
 
-        public void Add(T element)
+        public void Add(K key, V element)
         {
-            if (_group.Contains(element))
+            if (_group.TryGetValue(key, out var e) && e.Equals(element))
             {
-                throw new GroupDuplicateException();
+                throw new DuplicateException();
             }
 
-            _group.Add(element);
+            _group.Add(key, element);
         }
 
-        public void Remove(T element)
+        public void Remove(K key)
         {
-            if (_group.Contains(element))
+            if (_group.TryGetValue(key, out var element))
             {
-                _group.Remove(element);
+                _group.Remove(key);
                 return;
             }
 
-            throw new GroupAbsentElementException();
+            throw new ElementNotFountException();
         }
     }
 }
