@@ -40,7 +40,12 @@ namespace Engine.Physics
 
         }
 
-        public abstract void CheckCollision();
+        public override void Update()
+        {
+            //DO Nothing
+        }
+
+        public abstract void CheckCollision(Collider other);
     }
 
     /// <summary>

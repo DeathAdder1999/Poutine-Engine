@@ -14,7 +14,9 @@ namespace Engine.Core
     public enum ComponentType
     {
         PHYSICS,
-        RENDER
+        RENDER,
+        IGNORE,
+        INPUT
     }
 
     public interface IComponent

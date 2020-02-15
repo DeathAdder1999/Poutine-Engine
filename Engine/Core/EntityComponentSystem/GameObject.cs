@@ -77,6 +77,31 @@ namespace Engine.Core
             return default(T);
         }
 
+        public void UpdateComponent<T>() where T : IComponent
+        {
+            GetComponent<T>()?.Update();
+        }
+
+        /// <summary>
+        /// Returns list of components of specified type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public List<T> GetComponents<T>() where T : IComponent
+        {
+            var list = new List<T>();
+
+            foreach (var component in _components)
+            {
+                if (component is T c)
+                {
+                    list.Add(c);
+                }
+            }
+
+            return list;
+        }
+
         /// <summary>
         /// Called once per frame, updates the game logic for the game object
         /// </summary>
