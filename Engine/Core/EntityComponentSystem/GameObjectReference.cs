@@ -14,7 +14,7 @@ namespace Engine.Core
     {
         private string _reference;
 
-        public string Reference { get; }
+        public string Reference => _reference;
 
         public GameObjectReference()
         {

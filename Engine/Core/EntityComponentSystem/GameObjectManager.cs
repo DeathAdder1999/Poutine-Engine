@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Engine.ErrorHandler;
 
 namespace Engine.Core.EntityComponentSystem
@@ -10,7 +7,8 @@ namespace Engine.Core.EntityComponentSystem
     class GameObjectManager
     {
         public static GameObjectManager Instance = new GameObjectManager();
-        private Dictionary<string, GameObject> _gamObjects = new Dictionary<string, GameObject>();
+        private Dictionary<string, GameObject> _gameObjects = new Dictionary<string, GameObject>();
+        public EventHandler<GameObject> GameObjectAdded;
 
         private GameObjectManager()
         {
@@ -20,24 +18,23 @@ namespace Engine.Core.EntityComponentSystem
         {
             var objectRef = gameObject.Reference.Reference;
 
-            GameObject g;
-
-            if (_gamObjects.TryGetValue(objectRef, out g))
+            if (_gameObjects.TryGetValue(objectRef, out var g))
             {
                 throw new DuplicateException("GameObject with given reference already exists!");
             }
 
-            _gamObjects[objectRef] = gameObject;
+            _gameObjects[objectRef] = gameObject;
+            GameObjectAdded?.Invoke(this, gameObject);
         }
 
         public void Remove(string reference)
         {
-            if (!_gamObjects.TryGetValue(reference, out var gameObject))
+            if (!_gameObjects.TryGetValue(reference, out var gameObject))
             {
                 throw new ElementNotFountException("GameObject with given reference not found!");
             }
 
-            _gamObjects.Remove(reference);
+            _gameObjects.Remove(reference);
             gameObject.Dispose();
         }
 

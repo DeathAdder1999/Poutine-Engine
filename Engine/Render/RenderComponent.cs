@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Engine.Core;
 using Engine.Physics;
 using SFML.Graphics;
+using SFML.System;
 
 namespace Engine.Render
 {
@@ -24,9 +25,16 @@ namespace Engine.Render
 
         public override void Update()
         {
-            
+            Draw();
+            DrawDebug();
         }
 
+        private void Draw()
+        {
+            var pos = Owner.Transform.Position;
+            Shape.Position = new Vector2f(pos.X, pos.Y);
+            EngineService.MainWindow.Draw(Shape);
+        }
 
         private void DrawDebug()
         {

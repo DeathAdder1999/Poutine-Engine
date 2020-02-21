@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms.VisualStyles;
+using Engine.Core.EntityComponentSystem;
+using Engine.Core.Input;
+using Engine.Render;
 
 namespace Engine
 {
@@ -14,22 +12,30 @@ namespace Engine
         public const float MinFPS = 25;
         public const long SkipTicks = (long)(1000 / TargetFPS);
         private long _startTime = Utils.GetCurrentTimeMillis();
+        private bool _run = true;
 
         public Engine(params string[] settings)
         {
+            InitializeServices();
+            EngineService.Renderer.WindowClosed += OnClosed;
+        }
 
+        private void OnClosed(object sender, EventArgs e)
+        {
+            //TODO cleanup
+            _run = false;
         }
 
         /// <summary>
-        /// Entry point of the engine.
+        /// Entry point of the engine loop.
+        /// <remarks>Blocking call</remarks>
         /// </summary>
         public void Start()
         {
-            InitializeServices();
             var nextGameTick = GetTickCount();
 
             //Main loop
-            while (true)
+            while (_run)
             {
                 Update();
                 Display();
@@ -50,12 +56,12 @@ namespace Engine
 
         public void Update()
         {
-
+            InputManager.Instance.HandleInputs();
         }
 
         public void Display()
         {
-
+            EngineService.Renderer.Render();
         }
 
         private long GetTickCount()
@@ -68,6 +74,8 @@ namespace Engine
         /// </summary>
         private void InitializeServices()
         {
+            EngineService.Renderer = new Renderer();
+            EngineService.Renderer.Init();
 
         }
     }

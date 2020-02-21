@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
+using Engine.ErrorHandler;
 
 namespace Engine.Core
 {
@@ -32,26 +34,43 @@ namespace Engine.Core
         protected GameObject()
         {
             Reference = new GameObjectReference(Utils.GetUniqueReference());
+            Transform = new Transform() {Position = new Vector2(0, 0)};
         }
 
         protected GameObject(GameObjectReference reference)
         {
             Reference = reference;
+            Transform = new Transform() { Position = new Vector2(0, 0) };
         }
 
         protected GameObject(GameObjectReference reference, GameObject parent) : this(reference)
         {
             Parent = parent;
+            Transform.Parent = parent.Transform.Parent;
         }
 
-        private GameObject(GameObject parent)
+        protected GameObject(GameObject parent) : this()
         {
             Parent = parent;
+            Transform.Parent = parent.Transform.Parent;
         }
 
         public void AddComponent(IComponent component)
         {
+            if (_components.Contains(component))
+            {
+                throw new DuplicateException("GameObject cannot have the same component twice");
+            }
+
             _components.Add(component);
+        }
+
+        public void AddComponents(params IComponent[] components)
+        {
+            foreach (var c in components)
+            {
+                AddComponent(c);
+            }
         }
 
         public void RemoveComponent(IComponent component)
@@ -59,6 +78,11 @@ namespace Engine.Core
             _components.Remove(component);
         }
 
+        /// <summary>
+        /// Uses GetComponent<T>() underneath, not optimal.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>true if GameObject has the component specified</returns>
         public bool HasComponent<T>() where T : IComponent
         {
             return GetComponent<T>() != null;
@@ -75,6 +99,13 @@ namespace Engine.Core
             }
 
             return default(T);
+        }
+
+        public bool TryGetComponent<T>(out T component) where T : IComponent
+        {
+            component = GetComponent<T>();
+
+            return !component.Equals(default);
         }
 
         public void UpdateComponent<T>() where T : IComponent

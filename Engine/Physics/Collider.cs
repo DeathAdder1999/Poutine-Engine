@@ -27,8 +27,6 @@ namespace Engine.Physics
 
         public bool IsTrigger { get; set; }
 
-        public bool IsActive { get; set; }
-
         protected Collider(GameObject owner) : base(owner)
         {
             _physics = Owner.GetComponent<PhysicsComponent>();

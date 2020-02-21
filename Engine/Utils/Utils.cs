@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-static class Utils
+
+public static class Utils
 {
     private static readonly DateTime Epoch = new DateTime(1970, 1, 1); 
 
