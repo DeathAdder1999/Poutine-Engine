@@ -15,8 +15,14 @@ namespace Engine.Render
 
         public Renderer()
         {
-             _window = new RenderWindow(VideoMode.DesktopMode, "screen");
-             EngineService.MainWindow = _window;
+             _window = new RenderWindow(VideoMode.DesktopMode, EngineService.AppName);
+
+             _window.Closed += (sender, args) => {
+                 WindowClosed?.Invoke(this, EventArgs.Empty);
+                 _window.Close();
+             };
+
+            EngineService.MainWindow = _window;
              GameObjectManager.Instance.GameObjectAdded += OnGameObjectAdded;
         }
 
@@ -30,11 +36,6 @@ namespace Engine.Render
 
         public void Render()
         {
-            if (!_window.IsOpen)
-            {
-                return;
-            }
-
             _window.DispatchEvents();
             _window.Clear();
 
@@ -43,7 +44,10 @@ namespace Engine.Render
 
             foreach (var renderComponent in renderComponents)
             {
-                renderComponent.Update();
+                if (renderComponent.IsActive)
+                {
+                    renderComponent.Update();
+                }
             }
 
             _window.Display();
@@ -51,16 +55,12 @@ namespace Engine.Render
 
         public void Init()
         {
-            if (!_window.IsOpen)
+            if (_window.IsOpen)
             {
-                _window.SetActive(true);
+                return;
             }
 
-            _window.Closed += (sender, args) =>
-            {
-                WindowClosed?.Invoke(this, EventArgs.Empty);
-                _window.Close();
-            };
+            _window.SetActive(true);
         }
     }
 }

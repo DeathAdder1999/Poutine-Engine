@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
+using Engine.Core.Input;
 using Engine.ErrorHandler;
+using Engine.Render;
 
 namespace Engine.Core
 {
@@ -11,6 +14,8 @@ namespace Engine.Core
 
     public abstract class GameObject : IDisposable
     {
+        public string Name { get; set; }
+
         public GameObjectReference Reference { get; }
 
         public bool Disposed { get; private set; }
@@ -23,6 +28,8 @@ namespace Engine.Core
 
         public string Tag { get; set; }
 
+        private const float MouseDetectionOffset = 5f;
+
         #region Game Specific Properties
 
         private List<IComponent> _components = new List<IComponent>();
@@ -34,7 +41,7 @@ namespace Engine.Core
         protected GameObject()
         {
             Reference = new GameObjectReference(Utils.GetUniqueReference());
-            Transform = new Transform() {Position = new Vector2(0, 0)};
+            Transform = new Transform() { Position = new Vector2(0, 0) };
         }
 
         protected GameObject(GameObjectReference reference)
@@ -94,7 +101,7 @@ namespace Engine.Core
             {
                 if (component is T)
                 {
-                    return (T) component;
+                    return (T)component;
                 }
             }
 
@@ -133,6 +140,32 @@ namespace Engine.Core
             return list;
         }
 
+        public bool IsUnderMouse(MousePosition pos)
+        {
+            var renderComponents = GetComponents<RenderComponent>();
+
+            if (renderComponents.Any())
+            {
+                foreach (var renderComponent in renderComponents)
+                {
+                    if (renderComponent.IsUnderMouse(pos))
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            var center = Transform.Position;
+
+            var x = new Vector2(center.X - MouseDetectionOffset, center.X + MouseDetectionOffset);
+            var y = new Vector2(center.Y - MouseDetectionOffset, center.Y + MouseDetectionOffset);
+
+            return pos.X > x.X && pos.X < x.Y && pos.X > y.X && pos.X < y.Y;
+
+        }
+
         /// <summary>
         /// Called once per frame, updates the game logic for the game object
         /// </summary>
@@ -150,6 +183,16 @@ namespace Engine.Core
 
         public static bool operator ==(GameObject o1, GameObject o2)
         {
+            if (o1 is null && o2 is null)
+            {
+                return true;
+            }
+
+            if (o1 is null || o2 is null)
+            {
+                return false;
+            }
+
             return o1.Reference == o2.Reference;
         }
 

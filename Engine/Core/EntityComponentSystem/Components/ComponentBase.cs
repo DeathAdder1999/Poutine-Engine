@@ -10,7 +10,7 @@ namespace Engine.Core
     {
         public GameObject Owner { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
 
         public ComponentType Type { get; protected set; } = ComponentType.IGNORE;
 

@@ -13,5 +13,7 @@ namespace Engine
         public static RenderWindow MainWindow { get; set; }
         public static Renderer Renderer { get; set; }
         public static Engine Engine { get; set; }
+        public static string AppName = "Poutine Engine";
+        public static bool IsDebug { get; set; } = true;
     }
 }

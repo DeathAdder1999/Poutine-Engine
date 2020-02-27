@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Core;
+using Engine.Core.Input;
 using Engine.Physics;
 using SFML.Graphics;
 using SFML.System;
@@ -12,7 +13,7 @@ namespace Engine.Render
 {
     public class RenderComponent : ComponentBase
     {
-        public Texture Texture { get; set; }
+        public Sprite Sprite { get; set; }
 
         public Shape Shape { get; set; }
 
@@ -21,6 +22,16 @@ namespace Engine.Render
         public RenderComponent(GameObject owner) : base(owner)
         {
             Type = ComponentType.RENDER;
+        }
+
+        public bool IsUnderMouse(MousePosition pos)
+        {
+            if (Sprite != null)
+            {
+                return Sprite.Contains(pos);
+            }
+
+            return Shape != null && Shape.Contains(pos);
         }
 
         public override void Update()

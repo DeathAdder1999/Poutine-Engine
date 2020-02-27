@@ -27,7 +27,7 @@ namespace Engine
                 inputComponent.Owner.Transform.Position = new Vector2(pos.X + 1, pos.Y);
             });
             var renderComponent = new RenderComponent(r) {Shape = new RectangleShape(new Vector2f(50, 50))};
-            //renderComponent.Shape.FillColor = Color.Black;
+            
             r.AddComponents(renderComponent, inputComponent);
             GameObjectManager.Instance.Add(r);
 

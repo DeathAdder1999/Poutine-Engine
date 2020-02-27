@@ -74,6 +74,7 @@
     <Compile Include="Core\Group.cs" />
     <Compile Include="Core\Input\InputComponent.cs" />
     <Compile Include="Core\Input\InputManager.cs" />
+    <Compile Include="Core\SelectionManager.cs" />
     <Compile Include="Core\Transform.cs" />
     <Compile Include="Debug\Logger.cs" />
     <Compile Include="Core\EntityComponentSystem\Components\IComponent.cs" />
