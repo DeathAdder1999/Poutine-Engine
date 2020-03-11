@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Engine.Core;
 using Engine.Core.Input;
 using Engine.Physics;
+using Engine.Render.Shapes;
 using SFML.Graphics;
 using SFML.System;
 
@@ -15,7 +16,7 @@ namespace Engine.Render
     {
         public Sprite Sprite { get; set; }
 
-        public Shape Shape { get; set; }
+        public ShapeBase Shape { get; set; }
 
         public Color Color { get; set; }
 
@@ -37,21 +38,32 @@ namespace Engine.Render
         public override void Update()
         {
             Draw();
-            DrawDebug();
+            DrawDebug();         
         }
 
         private void Draw()
         {
             var pos = Owner.Transform.Position;
             Shape.Position = new Vector2f(pos.X, pos.Y);
-            EngineService.MainWindow.Draw(Shape);
+            Graphics.Draw(Shape);
         }
 
         private void DrawDebug()
         {
         #if DEBUG
             var colliders = Owner.GetComponents<Collider>();
-            //Draw colliders
+            
+            if (Owner.IsSelected)
+            {
+                var pos = Owner.Transform.Position;
+
+                Graphics.DrawArrows(new Vector2f(pos.X, pos.Y), Shape.Scale);
+
+                foreach (var collider in colliders)
+                {
+                    Graphics.Draw(collider.ColliderShape);
+                }
+            }
         #endif
         }
     }

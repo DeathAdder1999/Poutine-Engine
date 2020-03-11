@@ -46,6 +46,13 @@ namespace Engine.ErrorHandler
         public MissingComponentException(Severity s, string msg="") : base(s, msg) { }
     }
 
+    public class IllegalOperationException : ExceptionBase
+    {
+        public IllegalOperationException(string msg="") : base(msg) { }
+        public IllegalOperationException(Severity s, string msg="") : base(s, msg) { }
+
+    }
+
     #endregion
 
 }

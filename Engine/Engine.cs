@@ -2,6 +2,7 @@
 using System.Threading;
 using Engine.Core.EntityComponentSystem;
 using Engine.Core.Input;
+using Engine.Physics;
 using Engine.Render;
 
 namespace Engine
@@ -56,6 +57,7 @@ namespace Engine
 
         public void Update()
         {
+            PhysicsManager.Instance.Update();
             InputManager.Instance.HandleInputs();
         }
 

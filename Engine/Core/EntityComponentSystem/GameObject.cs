@@ -24,6 +24,8 @@ namespace Engine.Core
 
         public bool IsDirty { get; set; }
 
+        public bool IsSelected { get; set; }
+
         public bool IsStatic { get; set; }
 
         public string Tag { get; set; }
@@ -69,6 +71,11 @@ namespace Engine.Core
                 throw new DuplicateException("GameObject cannot have the same component twice");
             }
 
+            if (component.Owner != this)
+            {
+                throw new IllegalOperationException("Component does not belong to this GameObject");
+            }
+
             _components.Add(component);
         }
 
@@ -112,7 +119,7 @@ namespace Engine.Core
         {
             component = GetComponent<T>();
 
-            return !component.Equals(default);
+            return !component.IsDefault();
         }
 
         public void UpdateComponent<T>() where T : IComponent

@@ -29,6 +29,15 @@ namespace Engine.Core.EntityComponentSystem
             GameObjectAdded?.Invoke(this, gameObject);
         }
 
+        
+        public void Add(params GameObject[] gameObjects)
+        {
+            foreach (var gameObject in gameObjects)
+            {
+                Add(gameObject);
+            }
+        }
+
         public void Remove(string reference)
         {
             if (!_gameObjects.TryGetValue(reference, out var gameObject))

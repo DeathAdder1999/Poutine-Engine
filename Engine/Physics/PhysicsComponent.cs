@@ -92,7 +92,7 @@ namespace Engine.Physics
 
         public override void Update()
         {
-            throw new NotImplementedException();
+            
         }
 
 

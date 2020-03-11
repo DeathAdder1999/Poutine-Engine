@@ -21,6 +21,8 @@ namespace Engine.Core
 
     public interface IComponent
     {
+        GameObject Owner { get; set; }
+
         void Update();
     }
 }

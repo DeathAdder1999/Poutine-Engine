@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Engine.Core;
 using Engine.ErrorHandler;
+using Engine.Render.Shapes;
+using SFML.Graphics;
+using SFML.System;
 
 namespace Engine.Physics
 {
@@ -15,6 +18,8 @@ namespace Engine.Physics
     public abstract class Collider : ComponentBase
     {
         private PhysicsComponent _physics;
+
+        public ShapeBase ColliderShape { get; protected set; }
 
         public EventHandler<CollisionInfo> CollisionEnter;
         public EventHandler<CollisionInfo> CollisionExit;
@@ -26,6 +31,7 @@ namespace Engine.Physics
         public Vector2 DetectionOffset { get; set; }
 
         public bool IsTrigger { get; set; }
+        public bool DetectSelfCollision { get; set; }
 
         protected Collider(GameObject owner) : base(owner)
         {
@@ -40,10 +46,23 @@ namespace Engine.Physics
 
         public override void Update()
         {
-            //DO Nothing
+            var pos = Owner.Transform.Position;
+            ColliderShape.Position = new Vector2f(pos.X, pos.Y);
         }
 
-        public abstract void CheckCollision(Collider other);
+        public void CheckCollision(Collider other)
+        {
+            if (!DetectSelfCollision && other.Owner == Owner)
+            {
+                return;               
+            }
+
+            //TODO make sure the proper triggered
+            if (ColliderShape.Intersects(other.ColliderShape))
+            {
+                CollisionEnter?.Invoke(this, new CollisionInfo() {c1 = this, c2 = other});
+            }
+        }
     }
 
     /// <summary>
