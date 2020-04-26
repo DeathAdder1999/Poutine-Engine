@@ -59,11 +59,13 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1910, 788);
+            this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(955, 393);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(1910, 890);
+            this.toolStripContainer1.Size = new System.Drawing.Size(955, 459);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -76,10 +78,12 @@
             // tabControl1
             // 
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1910, 788);
+            this.tabControl1.Size = new System.Drawing.Size(955, 393);
             this.tabControl1.TabIndex = 0;
             // 
             // menuStrip1
@@ -91,7 +95,7 @@
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1910, 49);
+            this.menuStrip1.Size = new System.Drawing.Size(955, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -103,48 +107,48 @@
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem1});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(75, 45);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(229, 46);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(229, 46);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(229, 46);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem1
             // 
             this.saveAsToolStripMenuItem1.Name = "saveAsToolStripMenuItem1";
-            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(229, 46);
+            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(141, 26);
             this.saveAsToolStripMenuItem1.Text = "Save as";
             this.saveAsToolStripMenuItem1.Click += new System.EventHandler(this.saveAsToolStripMenuItem1_Click);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(136, 45);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newFileButton,
             this.openFileButton,
@@ -152,9 +156,9 @@
             this.saveAsButton,
             this.fontSizeSelector,
             this.fontSelector});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 49);
+            this.toolStrip1.Location = new System.Drawing.Point(4, 28);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(418, 53);
+            this.toolStrip1.Size = new System.Drawing.Size(358, 38);
             this.toolStrip1.TabIndex = 1;
             // 
             // newFileButton
@@ -163,7 +167,7 @@
             this.newFileButton.Image = ((System.Drawing.Image)(resources.GetObject("newFileButton.Image")));
             this.newFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newFileButton.Name = "newFileButton";
-            this.newFileButton.Size = new System.Drawing.Size(44, 50);
+            this.newFileButton.Size = new System.Drawing.Size(29, 35);
             this.newFileButton.Text = "New";
             this.newFileButton.Click += new System.EventHandler(this.newFileButton_Click);
             // 
@@ -175,7 +179,7 @@
             this.openFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openFileButton.Name = "openFileButton";
             this.openFileButton.Padding = new System.Windows.Forms.Padding(10, 5, 1, 1);
-            this.openFileButton.Size = new System.Drawing.Size(55, 50);
+            this.openFileButton.Size = new System.Drawing.Size(40, 35);
             this.openFileButton.Text = "Open";
             this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
             // 
@@ -185,7 +189,7 @@
             this.saveFileButton.Image = ((System.Drawing.Image)(resources.GetObject("saveFileButton.Image")));
             this.saveFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveFileButton.Name = "saveFileButton";
-            this.saveFileButton.Size = new System.Drawing.Size(44, 50);
+            this.saveFileButton.Size = new System.Drawing.Size(29, 35);
             this.saveFileButton.Text = "Save";
             this.saveFileButton.Click += new System.EventHandler(this.saveFileButton_Click);
             // 
@@ -195,7 +199,7 @@
             this.saveAsButton.Image = ((System.Drawing.Image)(resources.GetObject("saveAsButton.Image")));
             this.saveAsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveAsButton.Name = "saveAsButton";
-            this.saveAsButton.Size = new System.Drawing.Size(44, 50);
+            this.saveAsButton.Size = new System.Drawing.Size(29, 35);
             this.saveAsButton.Text = "Save As";
             this.saveAsButton.Click += new System.EventHandler(this.saveAsButton_Click);
             // 
@@ -204,31 +208,32 @@
             this.fontSizeSelector.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.fontSizeSelector.Margin = new System.Windows.Forms.Padding(25, 0, 1, 0);
             this.fontSizeSelector.Name = "fontSizeSelector";
-            this.fontSizeSelector.Size = new System.Drawing.Size(75, 53);
+            this.fontSizeSelector.Size = new System.Drawing.Size(75, 38);
             // 
             // fontSelector
             // 
             this.fontSelector.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.fontSelector.Name = "fontSelector";
             this.fontSelector.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.fontSelector.Size = new System.Drawing.Size(125, 53);
+            this.fontSelector.Size = new System.Drawing.Size(125, 38);
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(8, 8);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 38);
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 1;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1910, 890);
+            this.ClientSize = new System.Drawing.Size(955, 459);
             this.Controls.Add(this.toolStripContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Script Editor";
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
