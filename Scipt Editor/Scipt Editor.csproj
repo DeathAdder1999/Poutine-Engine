@@ -62,8 +62,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\TabPageClosable.cs">
+    <Compile Include="UI\CloseButton.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\CloseButton.Designer.cs">
+      <DependentUpon>CloseButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DocumentTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\DocumentTabPage.Designer.cs">
+      <DependentUpon>DocumentTabPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EditorUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\EditorUI.Designer.cs">
+      <DependentUpon>EditorUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TabControlClosable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\TabControlClosable.Designer.cs">
+      <DependentUpon>TabControlClosable.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -77,6 +98,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\DocumentTabPage.resx">
+      <DependentUpon>DocumentTabPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EditorUI.resx">
+      <DependentUpon>EditorUI.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

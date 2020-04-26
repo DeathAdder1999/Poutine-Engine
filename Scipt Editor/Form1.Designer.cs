@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl1 = new Scipt_Editor.UI.TabControlClosable();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +60,7 @@
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl1);
             this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(955, 393);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(955, 398);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(2);
@@ -72,18 +72,20 @@
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
             // 
             // tabControl1
             // 
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl1.Location = new System.Drawing.Point(0, 3);
             this.tabControl1.Name = "tabControl1";
+            this.tabControl1.Padding = new System.Drawing.Point(13, 0);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(955, 393);
+            this.tabControl1.Size = new System.Drawing.Size(955, 395);
             this.tabControl1.TabIndex = 0;
             // 
             // menuStrip1
@@ -148,7 +150,7 @@
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newFileButton,
             this.openFileButton,
@@ -158,7 +160,7 @@
             this.fontSelector});
             this.toolStrip1.Location = new System.Drawing.Point(4, 28);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(358, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(353, 33);
             this.toolStrip1.TabIndex = 1;
             // 
             // newFileButton
@@ -167,7 +169,7 @@
             this.newFileButton.Image = ((System.Drawing.Image)(resources.GetObject("newFileButton.Image")));
             this.newFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newFileButton.Name = "newFileButton";
-            this.newFileButton.Size = new System.Drawing.Size(29, 35);
+            this.newFileButton.Size = new System.Drawing.Size(29, 30);
             this.newFileButton.Text = "New";
             this.newFileButton.Click += new System.EventHandler(this.newFileButton_Click);
             // 
@@ -175,11 +177,10 @@
             // 
             this.openFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.openFileButton.Image = ((System.Drawing.Image)(resources.GetObject("openFileButton.Image")));
-            this.openFileButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.openFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openFileButton.Name = "openFileButton";
             this.openFileButton.Padding = new System.Windows.Forms.Padding(10, 5, 1, 1);
-            this.openFileButton.Size = new System.Drawing.Size(40, 35);
+            this.openFileButton.Size = new System.Drawing.Size(35, 30);
             this.openFileButton.Text = "Open";
             this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
             // 
@@ -189,7 +190,7 @@
             this.saveFileButton.Image = ((System.Drawing.Image)(resources.GetObject("saveFileButton.Image")));
             this.saveFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveFileButton.Name = "saveFileButton";
-            this.saveFileButton.Size = new System.Drawing.Size(29, 35);
+            this.saveFileButton.Size = new System.Drawing.Size(29, 30);
             this.saveFileButton.Text = "Save";
             this.saveFileButton.Click += new System.EventHandler(this.saveFileButton_Click);
             // 
@@ -199,7 +200,7 @@
             this.saveAsButton.Image = ((System.Drawing.Image)(resources.GetObject("saveAsButton.Image")));
             this.saveAsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveAsButton.Name = "saveAsButton";
-            this.saveAsButton.Size = new System.Drawing.Size(29, 35);
+            this.saveAsButton.Size = new System.Drawing.Size(29, 30);
             this.saveAsButton.Text = "Save As";
             this.saveAsButton.Click += new System.EventHandler(this.saveAsButton_Click);
             // 
@@ -208,14 +209,14 @@
             this.fontSizeSelector.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.fontSizeSelector.Margin = new System.Windows.Forms.Padding(25, 0, 1, 0);
             this.fontSizeSelector.Name = "fontSizeSelector";
-            this.fontSizeSelector.Size = new System.Drawing.Size(75, 38);
+            this.fontSizeSelector.Size = new System.Drawing.Size(75, 33);
             // 
             // fontSelector
             // 
             this.fontSelector.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.fontSelector.Name = "fontSelector";
             this.fontSelector.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.fontSelector.Size = new System.Drawing.Size(125, 38);
+            this.fontSelector.Size = new System.Drawing.Size(125, 33);
             // 
             // textBox1
             // 
@@ -252,7 +253,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
@@ -268,6 +268,7 @@
         private System.Windows.Forms.ToolStripButton newFileButton;
         private System.Windows.Forms.ToolStripComboBox fontSelector;
         private System.Windows.Forms.ToolStripComboBox fontSizeSelector;
+        private UI.TabControlClosable tabControl1;
     }
 }
 

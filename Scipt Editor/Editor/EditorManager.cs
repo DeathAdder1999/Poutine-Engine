@@ -17,7 +17,7 @@ namespace Scipt_Editor.Editor
 
         public Document CurrentDocument { get; set; }
 
-        public TabControl TabControl { get; set; }
+        public TabControlClosable TabControl { get; set; }
 
         private EditorManager()
         {
@@ -26,7 +26,7 @@ namespace Scipt_Editor.Editor
 
         public void CreateNewDocument()
         {
-            var tab = new TabPageClosable("Untitled");
+            var tab = new DocumentTabPage("Untitled");
             tab.Controls.Add(new RichTextBox {Dock = DockStyle.Fill});
             _openedDocuments.Add(new Document(tab));
             TabControl.Controls.Add(tab);
@@ -47,7 +47,7 @@ namespace Scipt_Editor.Editor
                     return;
                 }
 
-                var tab = new TabPageClosable(Path.GetFileName(dlg.FileName));
+                var tab = new DocumentTabPage(Path.GetFileName(dlg.FileName));
                 tab.Controls.Add(new RichTextBox {Dock = DockStyle.Fill});
 
                 _openedDocuments.Add(new Document(tab, dlg.FileName));

@@ -16,14 +16,14 @@ namespace Scipt_Editor
         Latest
     }
 
-    class Document
+    public class Document
     {
         private string _extension;
         private string _name;
         private string _filePath;
         private Font _font;
         private DocumentState _state = DocumentState.Latest;
-        private readonly TabPageClosable _tab;
+        private readonly DocumentTabPage _tab;
         private readonly RichTextBox _txtBox;
 
         public string Extension => _extension;
@@ -70,7 +70,7 @@ namespace Scipt_Editor
             }
         }
 
-        public DocumentState State
+        private DocumentState State
         {
             get => _state;
             set
@@ -92,7 +92,7 @@ namespace Scipt_Editor
             }
         }
 
-        public Document(TabPageClosable tab)
+        public Document(DocumentTabPage tab)
         {
             _tab = tab;
             _tab.Document = this;
@@ -102,7 +102,7 @@ namespace Scipt_Editor
             Debug.Assert(_txtBox != null);
         }
 
-        public Document(TabPageClosable tab, string path) : this(tab)
+        public Document(DocumentTabPage tab, string path) : this(tab)
         {
             FilePath = path;
         }
