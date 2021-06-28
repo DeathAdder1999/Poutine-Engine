@@ -76,7 +76,6 @@
     <Compile Include="Core\Input\InputManager.cs" />
     <Compile Include="Core\SelectionManager.cs" />
     <Compile Include="Core\Transform.cs" />
-    <Compile Include="Debug\Logger.cs" />
     <Compile Include="Core\EntityComponentSystem\Components\IComponent.cs" />
     <Compile Include="Core\EntityComponentSystem\GameObject.cs" />
     <Compile Include="Core\EntityComponentSystem\GameObjectReference.cs" />
