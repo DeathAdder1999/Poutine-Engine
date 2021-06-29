@@ -20,7 +20,7 @@ namespace Engine.Render
 
         public Color Color { get; set; }
 
-        public RenderComponent(GameObject owner) : base(owner)
+        public RenderComponent()
         {
             Type = ComponentType.RENDER;
         }

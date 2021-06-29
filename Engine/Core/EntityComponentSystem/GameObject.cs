@@ -71,11 +71,12 @@ namespace Engine.Core
                 throw new DuplicateException("GameObject cannot have the same component twice");
             }
 
-            if (component.Owner != this)
+            if (component.Owner != null)
             {
                 throw new IllegalOperationException("Component does not belong to this GameObject");
             }
 
+            component.Owner = this;
             _components.Add(component);
         }
 

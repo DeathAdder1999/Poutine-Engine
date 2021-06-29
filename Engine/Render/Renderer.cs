@@ -50,6 +50,8 @@ namespace Engine.Render
                 }
             }
 
+            SelectionManager.Instance.DrawDebugGizmos();
+
             _window.Display();
         }
 

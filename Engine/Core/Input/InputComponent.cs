@@ -17,7 +17,7 @@ namespace Engine.Core.Input
         /// </summary>
         private Queue<Keyboard.Key> _inputQueue = new Queue<Keyboard.Key>();
 
-        public InputComponent(GameObject owner) : base(owner)
+        public InputComponent()
         {
             InputManager.Instance.KeyPressed += OnKeyPressed;
             InputManager.Instance.KeyReleased += OnKeyReleased;

@@ -8,16 +8,11 @@ namespace Engine.Core
 {
     public abstract class ComponentBase : IComponent
     {
-        public GameObject Owner { get; set; }
+        public virtual GameObject Owner { get; set; }
 
         public bool IsActive { get; set; } = true;
 
         public ComponentType Type { get; protected set; } = ComponentType.IGNORE;
-
-        public ComponentBase(GameObject owner)
-        {
-            Owner = owner;
-        }
 
         public abstract void Update();
     }

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
+using System.Drawing;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Engine.Core.Input;
+using SFML.System;
+using SFML.Graphics;
+using Color = SFML.Graphics.Color;
+using Engine.Render;
 
 namespace Engine.Core
 {
@@ -105,6 +105,37 @@ namespace Engine.Core
 
             _selection.Clear();
             SelectionChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void DrawDebugGizmos()
+        {
+#if DEBUG
+            /*
+            if (_selection.Any())
+            {
+                var positions = new List<Vector2>();
+
+                foreach(var selected in _selection)
+                {
+                    var r = selected.GetComponent<RenderComponent>();
+                    positions.Add(selected.Transform.Position);
+                }
+
+                var boundingBox = PoutineMath.GetBoundingBox(positions);
+                var centroid = PoutineMath.GetMeanOfPoints(positions);
+                var rectangleDimensions = PoutineMath.GetRectangleFromPoints(boundingBox);
+                var boundingRectangle = new Render.Shapes.Rectangle(rectangleDimensions.X, rectangleDimensions.Y, rectangleDimensions.Z, rectangleDimensions.W);
+
+                var color = new Color(Color.Green);
+
+                color.A = 100;
+                boundingRectangle.FillColor = color;
+
+                Render.Graphics.DrawArrows(new Vector2f(centroid.X, centroid.Y), new Vector2f(1f, 1f));
+                Render.Graphics.Draw(boundingRectangle);
+            }
+            */
+        #endif
         }
     }
 }

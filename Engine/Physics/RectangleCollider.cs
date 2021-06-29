@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Engine.Core;
-using Engine.Render.Shapes;
+﻿using Engine.Render.Shapes;
 using SFML.Graphics;
 
 namespace Engine.Physics
@@ -56,12 +50,7 @@ namespace Engine.Physics
             }
         }
 
-        public RectangleCollider(GameObject owner) : base(owner)
-        {
-                
-        }
-
-        public RectangleCollider(GameObject owner, float x, float y, float width, float height) : base(owner)
+        public RectangleCollider(float x, float y, float width, float height)
         {
             var color = new Color(Color.Green);
             color.A = 100;

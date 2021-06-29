@@ -28,20 +28,23 @@ namespace Engine.Physics
         public EventHandler<CollisionInfo> TriggerExit;
         public EventHandler<CollisionInfo> TriggerStay;
 
+        public override GameObject Owner 
+        { 
+            get => base.Owner; 
+            set 
+            {
+                base.Owner = value;
+                _physics = base.Owner.GetComponent<PhysicsComponent>();
+            }
+        }
+
         public Vector2 DetectionOffset { get; set; }
 
         public bool IsTrigger { get; set; }
         public bool DetectSelfCollision { get; set; }
 
-        protected Collider(GameObject owner) : base(owner)
+        protected Collider()
         {
-            _physics = Owner.GetComponent<PhysicsComponent>();
-
-            if (_physics == null)
-            {
-                throw new MissingComponentException("Collider Component requires Physics Component to be attached");
-            }
-
         }
 
         public override void Update()

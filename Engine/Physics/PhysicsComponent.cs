@@ -85,7 +85,7 @@ namespace Engine.Physics
             }
         }
 
-        public PhysicsComponent(GameObject owner) : base(owner)
+        public PhysicsComponent()
         {
             Type = ComponentType.PHYSICS;
         }

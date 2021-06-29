@@ -79,6 +79,7 @@
     <Compile Include="Core\EntityComponentSystem\Components\IComponent.cs" />
     <Compile Include="Core\EntityComponentSystem\GameObject.cs" />
     <Compile Include="Core\EntityComponentSystem\GameObjectReference.cs" />
+    <Compile Include="Math\PoutineMath.cs" />
     <Compile Include="Physics\PhysicsManager.cs" />
     <Compile Include="Prebuilt\GameObjects\Rectangle.cs" />
     <Compile Include="Engine.cs" />
@@ -144,6 +145,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Core\DataStructures\" />
     <Folder Include="Core\RecourceManagment\" />
     <Folder Include="RemoteController\" />
   </ItemGroup>
