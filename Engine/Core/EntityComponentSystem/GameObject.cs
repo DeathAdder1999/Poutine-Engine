@@ -22,13 +22,16 @@ namespace Engine.Core
 
         public GameObject Parent { get; set; }
 
+        public bool IsActive { get; set; }
+
         public bool IsDirty { get; set; }
 
         public bool IsSelected { get; set; }
 
         public bool IsStatic { get; set; }
 
-        public string Tag { get; set; }
+        public string Tag { get; set; } = string.Empty;
+
 
         private const float MouseDetectionOffset = 5f;
 

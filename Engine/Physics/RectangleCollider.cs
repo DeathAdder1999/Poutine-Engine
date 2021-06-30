@@ -1,9 +1,10 @@
 ﻿using Engine.Render.Shapes;
 using SFML.Graphics;
+using System.Xml;
 
 namespace Engine.Physics
 {
-    public class RectangleCollider : Collider
+    public class RectangleCollider : ColliderComponent
     {
         private float _width = 1;
         private float _height = 1;
@@ -59,6 +60,10 @@ namespace Engine.Physics
             Y = y;
             Width = width;
             Height = height;
+        }
+
+        public override void WriteComponent(XmlWriter writer)
+        {
         }
     }
 }

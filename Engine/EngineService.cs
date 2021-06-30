@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Engine.Render;
+﻿using Engine.Render;
+using Engine.Core;
 using SFML.Graphics;
 
 namespace Engine
@@ -15,5 +11,7 @@ namespace Engine
         public static Engine Engine { get; set; }
         public static string AppName = "Poutine Engine";
         public static bool IsDebug { get; set; } = true;
+
+        public static Camera MainCamera { get; set; }
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
+using System.Xml;
 using Engine.Core;
 using Engine.Core.Input;
 using Engine.Physics;
@@ -43,28 +40,35 @@ namespace Engine.Render
 
         private void Draw()
         {
+            var camera = EngineService.MainCamera;
+            var cameraPos = camera?.Transform?.Position ?? Vector2.Zero;
             var pos = Owner.Transform.Position;
-            Shape.Position = new Vector2f(pos.X, pos.Y);
+            Shape.Position = new Vector2f(pos.X - cameraPos.X, pos.Y - cameraPos.Y);
             Graphics.Draw(Shape);
         }
 
         private void DrawDebug()
         {
         #if DEBUG
-            var colliders = Owner.GetComponents<Collider>();
+            var colliders = Owner.GetComponents<ColliderComponent>();
             
             if (Owner.IsSelected)
             {
-                var pos = Owner.Transform.Position;
+                var pos = Shape.Position;
 
                 Graphics.DrawArrows(new Vector2f(pos.X, pos.Y), Shape.Scale);
 
                 foreach (var collider in colliders)
                 {
+                    collider.ColliderShape.Position = pos;
                     Graphics.Draw(collider.ColliderShape);
                 }
             }
         #endif
+        }
+
+        public override void WriteComponent(XmlWriter writer)
+        {
         }
     }
 }

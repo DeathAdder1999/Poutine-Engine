@@ -11,7 +11,7 @@ namespace Engine.Physics
     public class PhysicsManager
     {
         private static PhysicsManager _instance;
-        private List<Collider> _colliders = new List<Collider>();
+        private List<ColliderComponent> _colliders = new List<ColliderComponent>();
         private List<PhysicsComponent> _components = new List<PhysicsComponent>();
 
         public static PhysicsManager Instance => _instance ?? (_instance = new PhysicsManager());
@@ -23,7 +23,7 @@ namespace Engine.Physics
 
         private void OnGameObjectAdded(object sender, GameObject e)
         {
-            if (e.TryGetComponent<Collider>(out var collider))
+            if (e.TryGetComponent<ColliderComponent>(out var collider))
             {
                 _colliders.Add(collider);
             }

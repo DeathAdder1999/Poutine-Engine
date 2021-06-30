@@ -2,15 +2,17 @@
 using System.Threading;
 using Engine.Core.EntityComponentSystem;
 using Engine.Core.Input;
+using Engine.Core.SceneManagement;
 using Engine.Physics;
 using Engine.Render;
+using Engine.IO;
 
 namespace Engine
 {
     public class Engine
     {
-        public const float TargetFPS = 45; 
-        public const float MinFPS = 25;
+        public const float TargetFPS = 120; 
+        public const float MinFPS = 40;
         public const long SkipTicks = (long)(1000 / TargetFPS);
         private long _startTime = Utils.GetCurrentTimeMillis();
         private bool _run = true;
@@ -24,6 +26,7 @@ namespace Engine
         private void OnClosed(object sender, EventArgs e)
         {
             //TODO cleanup
+            SceneWriter.WriteScene(SceneManager.Instance.ActiveScene);
             _run = false;
         }
 

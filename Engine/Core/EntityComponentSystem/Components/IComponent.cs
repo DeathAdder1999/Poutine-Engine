@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Engine.Core;
+using System.Xml;
 
 namespace Engine.Core
 {
@@ -24,5 +22,7 @@ namespace Engine.Core
         GameObject Owner { get; set; }
 
         void Update();
+
+        void WriteComponent(XmlWriter writer);
     }
 }

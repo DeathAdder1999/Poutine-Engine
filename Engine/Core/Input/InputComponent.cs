@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using SFML.Graphics;
 using SFML.Window;
 
@@ -49,6 +50,11 @@ namespace Engine.Core.Input
         public void BindOnPress(Keyboard.Key key, Action a)
         {
             _bindings.Add(key, new KeyAction(a, false));
+        }
+
+        public override void WriteComponent(XmlWriter writer)
+        {
+
         }
     }
 

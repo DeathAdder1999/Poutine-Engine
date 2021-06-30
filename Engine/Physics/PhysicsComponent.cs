@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Engine.Core;
 using SFML.System;
 using MathNet.Numerics;
+using System.Xml;
 
 namespace Engine.Physics
 {
@@ -95,6 +96,9 @@ namespace Engine.Physics
             
         }
 
-
+        public override void WriteComponent(XmlWriter writer)
+        {
+            
+        }
     }
 }

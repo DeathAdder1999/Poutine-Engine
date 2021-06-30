@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Camera.cs" />
     <Compile Include="Core\EntityComponentSystem\Components\ComponentBase.cs" />
     <Compile Include="Core\EntityComponentSystem\GameObjectManager.cs" />
     <Compile Include="Core\Group.cs" />
@@ -79,13 +80,14 @@
     <Compile Include="Core\EntityComponentSystem\Components\IComponent.cs" />
     <Compile Include="Core\EntityComponentSystem\GameObject.cs" />
     <Compile Include="Core\EntityComponentSystem\GameObjectReference.cs" />
+    <Compile Include="IO\SceneWriter.cs" />
     <Compile Include="Math\PoutineMath.cs" />
     <Compile Include="Physics\PhysicsManager.cs" />
     <Compile Include="Prebuilt\GameObjects\Rectangle.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="EngineService.cs" />
     <Compile Include="ErrorHandler\Exceptions\Exceptions.cs" />
-    <Compile Include="Physics\Collider.cs" />
+    <Compile Include="Physics\ColliderComponent.cs" />
     <Compile Include="Physics\PhysicsComponent.cs" />
     <Compile Include="Physics\RectangleCollider.cs" />
     <Compile Include="Program.cs" />

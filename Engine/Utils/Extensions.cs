@@ -44,5 +44,12 @@ public static class Extensions
     {
         return EqualityComparer<T>.Default.Equals(inObj, default);
     }
+
+    public static List<T> Copy<T>(this List<T> listToCopy)
+    {
+        var copy = new List<T>();
+        copy.AddRange(listToCopy);
+        return copy;
+    }
 }
 

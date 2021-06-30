@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Xml;
 
 namespace Engine.Core
 {
@@ -15,5 +11,7 @@ namespace Engine.Core
         public ComponentType Type { get; protected set; } = ComponentType.IGNORE;
 
         public abstract void Update();
+
+        public abstract void WriteComponent(XmlWriter writer);
     }
 }

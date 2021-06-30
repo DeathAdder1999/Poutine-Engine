@@ -5,7 +5,9 @@ namespace Engine.Core.SceneManagement
     public class SceneManager
     {
         public static SceneManager Instance = new SceneManager();
-        private List<Scene> _scenes = new List<Scene>();
+        private Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>();
+
+        public Scene ActiveScene { get; private set; }
 
         private SceneManager()
         {
@@ -32,6 +34,13 @@ namespace Engine.Core.SceneManagement
         public void LoadScenes()
         {
 
+        }
+
+        // TODO delete
+        public void AddScene(Scene scene)
+        {
+            _scenes.Add(scene.Name, scene);
+            ActiveScene = scene;
         }
     }
 }

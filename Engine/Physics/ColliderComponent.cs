@@ -15,7 +15,7 @@ namespace Engine.Physics
     /// <summary>
     /// Base class for Physics Colliders
     /// </summary>
-    public abstract class Collider : ComponentBase
+    public abstract class ColliderComponent : ComponentBase
     {
         private PhysicsComponent _physics;
 
@@ -43,7 +43,7 @@ namespace Engine.Physics
         public bool IsTrigger { get; set; }
         public bool DetectSelfCollision { get; set; }
 
-        protected Collider()
+        protected ColliderComponent()
         {
         }
 
@@ -53,7 +53,7 @@ namespace Engine.Physics
             ColliderShape.Position = new Vector2f(pos.X, pos.Y);
         }
 
-        public void CheckCollision(Collider other)
+        public void CheckCollision(ColliderComponent other)
         {
             if (!DetectSelfCollision && other.Owner == Owner)
             {
@@ -73,8 +73,8 @@ namespace Engine.Physics
     /// </summary>
     public struct CollisionInfo
     {
-        public Collider c1;
-        public Collider c2;
+        public ColliderComponent c1;
+        public ColliderComponent c2;
         //TODO add time 
     }
 }
