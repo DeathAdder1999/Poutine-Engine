@@ -69,10 +69,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Core\Camera.cs" />
     <Compile Include="Core\EntityComponentSystem\Components\ComponentBase.cs" />
-    <Compile Include="Core\EntityComponentSystem\GameObjectManager.cs" />
+    <Compile Include="Core\GameObjectManager.cs" />
     <Compile Include="Core\Group.cs" />
+    <Compile Include="Core\IGameObject.cs" />
     <Compile Include="Core\Input\InputComponent.cs" />
     <Compile Include="Core\Input\InputManager.cs" />
     <Compile Include="Core\SelectionManager.cs" />
@@ -80,6 +83,8 @@
     <Compile Include="Core\EntityComponentSystem\Components\IComponent.cs" />
     <Compile Include="Core\EntityComponentSystem\GameObject.cs" />
     <Compile Include="Core\EntityComponentSystem\GameObjectReference.cs" />
+    <Compile Include="IO\PoutineXmlReader.cs" />
+    <Compile Include="IO\SceneReader.cs" />
     <Compile Include="IO\SceneWriter.cs" />
     <Compile Include="Math\PoutineMath.cs" />
     <Compile Include="Physics\PhysicsManager.cs" />
@@ -94,6 +99,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\SceneManagement\Scene.cs" />
     <Compile Include="Core\SceneManagement\SceneManager.cs" />
+    <Compile Include="Reflection\PoutineReflection.cs" />
     <Compile Include="Render\Graphics.cs" />
     <Compile Include="Render\RenderComponent.cs" />
     <Compile Include="Render\Renderer.cs" />

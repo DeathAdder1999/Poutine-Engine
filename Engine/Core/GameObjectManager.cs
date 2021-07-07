@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Engine.Core.Input;
 using Engine.ErrorHandler;
 
-namespace Engine.Core.EntityComponentSystem
+namespace Engine.Core
 {
     class GameObjectManager
     {
         private static GameObjectManager _instance;
         public static GameObjectManager Instance => _instance ?? (_instance = new GameObjectManager());
-        private Dictionary<string, GameObject> _gameObjects = new Dictionary<string, GameObject>();
+        private Dictionary<GameObjectReference, GameObject> _gameObjects = new Dictionary<GameObjectReference, GameObject>();
         public EventHandler<GameObject> GameObjectAdded;
 
         private GameObjectManager()
@@ -18,7 +18,7 @@ namespace Engine.Core.EntityComponentSystem
 
         public void Add(GameObject gameObject)
         {
-            var objectRef = gameObject.Reference.Reference;
+            var objectRef = gameObject.Reference;
 
             if (_gameObjects.TryGetValue(objectRef, out var g))
             {
@@ -38,7 +38,7 @@ namespace Engine.Core.EntityComponentSystem
             }
         }
 
-        public void Remove(string reference)
+        public void Remove(GameObjectReference reference)
         {
             if (!_gameObjects.TryGetValue(reference, out var gameObject))
             {
@@ -47,6 +47,12 @@ namespace Engine.Core.EntityComponentSystem
 
             _gameObjects.Remove(reference);
             gameObject.Dispose();
+        }
+
+        public GameObject Get(GameObjectReference reference)
+        {
+            _gameObjects.TryGetValue(reference, out var gameObject);
+            return gameObject;
         }
 
         public GameObject GetSelectionFromMouse(MousePosition pos)

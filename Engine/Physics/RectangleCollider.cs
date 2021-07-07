@@ -61,9 +61,5 @@ namespace Engine.Physics
             Width = width;
             Height = height;
         }
-
-        public override void WriteComponent(XmlWriter writer)
-        {
-        }
     }
 }

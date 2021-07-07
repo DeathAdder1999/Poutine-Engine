@@ -12,26 +12,49 @@ namespace Engine.Core
     /// The base class for all of the GameObjects.
     /// </summary>
 
-    public abstract class GameObject : IDisposable
+    public class GameObject : IGameObject, IDisposable
     {
+        private bool _isActive;
+
         public string Name { get; set; }
 
         public GameObjectReference Reference { get; }
 
-        public bool Disposed { get; private set; }
-
         public GameObject Parent { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool IsActive
+        {
+            get => _isActive;
+            set
+            {
+                if(_isActive == value)
+                {
+                    return;
+                }
 
-        public bool IsDirty { get; set; }
+                foreach(var component in _components)
+                {
+                    component.IsActive = value;
+                }
 
-        public bool IsSelected { get; set; }
+                _isActive = value;
+            }
+        }
 
         public bool IsStatic { get; set; }
 
         public string Tag { get; set; } = string.Empty;
 
+        #region Runtime Properties
+        [RuntimeProperty]
+        public bool Disposed { get; private set; }
+
+        [RuntimeProperty]
+        public bool IsDirty { get; set; }
+
+        [RuntimeProperty]
+        public bool IsSelected { get; set; }
+        #endregion
 
         private const float MouseDetectionOffset = 5f;
 
@@ -43,25 +66,29 @@ namespace Engine.Core
 
         #endregion
 
-        protected GameObject()
+        public GameObject()
         {
             Reference = new GameObjectReference(Utils.GetUniqueReference());
             Transform = new Transform() { Position = new Vector2(0, 0) };
+
+            GameObjectManager.Instance.Add(this);
         }
 
-        protected GameObject(GameObjectReference reference)
+        public GameObject(GameObjectReference reference)
         {
             Reference = reference;
             Transform = new Transform() { Position = new Vector2(0, 0) };
+
+            GameObjectManager.Instance.Add(this);
         }
 
-        protected GameObject(GameObjectReference reference, GameObject parent) : this(reference)
+        public GameObject(GameObjectReference reference, GameObject parent) : this(reference)
         {
             Parent = parent;
             Transform.Parent = parent.Transform.Parent;
         }
 
-        protected GameObject(GameObject parent) : this()
+        public GameObject(GameObject parent) : this()
         {
             Parent = parent;
             Transform.Parent = parent.Transform.Parent;
@@ -246,6 +273,16 @@ namespace Engine.Core
                 hashCode = (hashCode * 397) ^ (Parent != null ? Parent.GetHashCode() : 0);
                 return hashCode;
             }
+        }
+
+        public void Initialize()
+        {
+           
+        }
+
+        public void Start()
+        {
+            
         }
     }
 }

@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Reflection;
+using System.Collections.Generic;
 using System.Numerics;
 using Engine.Core.SceneManagement;
-using Engine.Core.EntityComponentSystem;
 using Engine.Core.Input;
 using Engine.Physics;
 using Engine.Render;
 using SFML.Window;
 using Engine.Core;
+using Engine.IO;
 using Rectangle = Engine.Render.Shapes.Rectangle;
 
 namespace Engine
@@ -15,9 +17,13 @@ namespace Engine
     {
         static void Main()
         {
+            var y = AppDomain.CurrentDomain.GetAssemblies();
+
             var engine = new Engine();
             var camera = new Camera();
             EngineService.MainCamera = camera;
+
+            /*
             var r = new Prebuilt.Rectangle(250, 250, 50, 50);
             var r2 = new Prebuilt.Rectangle(400, 400, 50, 50);
             var inputComponent = new InputComponent();
@@ -30,7 +36,7 @@ namespace Engine
                 var pos = inputComponent.Owner.Transform.Position;
                 inputComponent.Owner.Transform.Position = new Vector2(pos.X + 1, pos.Y);
             });
-            */
+            
 
             cameraInputComponent.BindOnPress(Keyboard.Key.A, () => {
                 var pos = cameraInputComponent.Owner.Transform.Position;
@@ -68,11 +74,9 @@ namespace Engine
             r.AddComponents(inputComponent, collider);
             r2.AddComponents(collider2);
             GameObjectManager.Instance.Add(r, r2, camera);
+            */
 
-            Scene scene = new Scene("SampleScene");
-            scene.AddChildren(new List<GameObject> { r, r2 });
-
-            SceneManager.Instance.AddScene(scene);
+            SceneManager.Instance.LoadSceneFromPath("C:\\Users\\dqasi\\Documents\\Projects\\Poutine-Engine\\Engine\\bin\\Debug\\SampleScene.poutine");
 
             engine.Start(); 
         }

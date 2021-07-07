@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Engine.Core.Input;
+using System.Numerics;
 using Engine.Render.Shapes;
 using SFML.Graphics;
-
+using Engine;
 
 public static class Extensions
 {
@@ -50,6 +47,42 @@ public static class Extensions
         var copy = new List<T>();
         copy.AddRange(listToCopy);
         return copy;
+    }
+
+    public static string ToXmlString(this Vector2 v)
+    {
+        return $"[{v.X} , {v.Y}]";
+    }
+
+    public static Dictionary<string, object> GetPersistentProperties(this object o)
+    {
+        var dict = new Dictionary<string, object>();
+
+        if (o == null) 
+        {
+            return dict;
+        }
+
+        var type = o.GetType();
+        var properties = type.GetProperties();
+
+        foreach(var property in properties)
+        {
+            if(Attribute.IsDefined(property, typeof(RuntimeProperty)))
+            {
+                continue;
+            }
+
+            var value = property.GetValue(o);
+            dict.Add(property.Name, value);
+        }
+
+        return dict;
+    }
+
+    public static bool IsNullOrEmpty(this string s)
+    {
+        return s == null || s == string.Empty;
     }
 }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Engine.Core;
-using Engine.Core.EntityComponentSystem;
 using SFML.Graphics;
 using SFML.Window;
 

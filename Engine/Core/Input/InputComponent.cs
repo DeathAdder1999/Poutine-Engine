@@ -51,11 +51,6 @@ namespace Engine.Core.Input
         {
             _bindings.Add(key, new KeyAction(a, false));
         }
-
-        public override void WriteComponent(XmlWriter writer)
-        {
-
-        }
     }
 
     struct KeyAction

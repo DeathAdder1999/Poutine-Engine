@@ -21,8 +21,8 @@ namespace Engine.Core
     {
         GameObject Owner { get; set; }
 
-        void Update();
+        bool IsActive { get; set; }
 
-        void WriteComponent(XmlWriter writer);
+        void Update();
     }
 }

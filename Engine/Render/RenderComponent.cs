@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using System.Xml;
 using Engine.Core;
 using Engine.Core.Input;
 using Engine.Physics;
@@ -65,10 +64,6 @@ namespace Engine.Render
                 }
             }
         #endif
-        }
-
-        public override void WriteComponent(XmlWriter writer)
-        {
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Core;
-using Engine.Core.EntityComponentSystem;
 
 namespace Engine.Physics
 {
@@ -42,11 +41,20 @@ namespace Engine.Physics
         {
             foreach (var component in _components)
             {
-                component.Update();
+                if (component.IsActive)
+                {
+                    component.Update();
+                }
             }
 
+            //TODO optimize
             for (var i = 0; i < _colliders.Count; i++)
             {
+                if(!_colliders[i].IsActive)
+                {
+                    continue;
+                }
+
                 for (var j = i; j < _colliders.Count; j++)
                 {
                     _colliders[i].Update();

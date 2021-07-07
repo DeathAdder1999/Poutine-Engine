@@ -1,4 +1,7 @@
-﻿using System.Xml;
+﻿using System.IO;
+using System.Numerics;
+using System.Xml;
+using System.Collections.Generic;
 using Engine.Core.SceneManagement;
 using Engine.Core;
 
@@ -6,7 +9,12 @@ namespace Engine.IO
 {
     public static class SceneWriter
     {
-        public static void WriteScene(Scene scene)
+        static SceneWriter()
+        {
+            VerifyProjectDirectories();
+        }
+
+        public static void WriteScene(Scene scene, string path="")
         {
             var sts = new XmlWriterSettings()
             {
@@ -14,14 +22,22 @@ namespace Engine.IO
                 OmitXmlDeclaration = true,
             };
 
-            using var writer = XmlWriter.Create($"{scene.Name}.poutine", sts);
+            var fileName = $"{scene.Name}.poutine";
+
+            if(path != string.Empty)
+            {
+                fileName = Path.Combine(path, fileName);
+            }
+
+            using var writer = XmlWriter.Create(fileName, sts);
             writer.WriteStartDocument();
             
             writer.WriteStartElement("Scene");
             writer.WriteAttributeString("name", scene.Name);
 
-            foreach (var sceneChild in scene.Children)
+            foreach (var sceneChildRef in scene.ChildrenRefs)
             {
+                var sceneChild = GameObjectManager.Instance.Get(sceneChildRef);
                 WriteGameObject(writer, sceneChild);
             }
 
@@ -31,73 +47,83 @@ namespace Engine.IO
 
         private static void WriteGameObject(XmlWriter writer, GameObject gameObject)
         {
-            writer.WriteStartElement("GameObject");
+            writer.WriteStartElement(gameObject.GetType().FullName);
             writer.WriteAttributeString("id", gameObject.Reference.Reference);
             writer.WriteAttributeString("parentId", gameObject.Parent?.Reference.Reference);
-            writer.WriteAttributeString("type", gameObject.GetType().ToString());
             writer.WriteAttributeString("name", gameObject.Name);
 
-            writer.WriteStartElement("tag");
-            writer.WriteString(gameObject.Tag);
-            writer.WriteEndElement();
+            var toIgnore = new List<string>() { "Reference", "Parent", "Name" };
 
-            writer.WriteStartElement("Transform");
-
-            writer.WriteStartElement("position");
-            writer.WriteString(gameObject.Transform.Position.ToString());
-            writer.WriteEndElement();
-
-            writer.WriteStartElement("rotation");
-            writer.WriteString(gameObject.Transform.Rotation.ToString());
-            writer.WriteEndElement();
-
-            writer.WriteStartElement("scale");
-            writer.WriteString(gameObject.Transform.Scale.ToString());
-            writer.WriteEndElement();
-
-            writer.WriteEndElement();
-
-            writer.WriteStartElement("isStatic");
-            writer.WriteString(gameObject.IsStatic.ToString());
-            writer.WriteEndElement();
-
-            writer.WriteStartElement("isActive");
-            writer.WriteString(gameObject.IsActive.ToString());
-            writer.WriteEndElement();
+            WriteObject(writer, gameObject, toIgnore);
 
             writer.WriteStartElement("Components");
 
             foreach (var component in gameObject.GetComponents<IComponent>())
             {
-                WriteComponent(writer, component);
+                writer.WriteStartElement(component.GetType().Name);
+                WriteObject(writer, component);
+                writer.WriteEndElement();
             }
 
             writer.WriteEndElement();
             writer.WriteEndElement();
         }
 
-        private static void WriteComponent(XmlWriter writer, IComponent component)
+        private static void WriteObject(XmlWriter writer, object o, List<string> propertiesToIgnore=null)
         {
-            if(component is Physics.PhysicsComponent)
-            {
-                writer.WriteStartElement("PhysicsComponent");
-            }
-            else if (component is Render.RenderComponent)
-            {
-                writer.WriteStartElement("RenderComponent");;
-            }
-            else if (component is Physics.ColliderComponent)
-            {
-                writer.WriteStartElement("ColliderComponent");
-            }
-            else if (component is Core.Input.InputComponent)
-            {
-                writer.WriteStartElement("InputComponent");
-            }
+            var propertiesDict = o.GetPersistentProperties();
 
-            component.WriteComponent(writer);
+            foreach(var kvp in propertiesDict)
+            {
+                if (propertiesToIgnore?.Contains(kvp.Key) ?? false)
+                {
+                    continue;
+                }
 
+                if (kvp.Value != null)
+                {
+                    WriteProperty(writer, kvp.Key, kvp.Value);
+                }
+            }
+        }
+
+        private static void WriteProperty(XmlWriter writer, string property, object value)
+        {
+            writer.WriteStartElement(property);
+
+            if (value is Vector2 v)
+            {
+                writer.WriteString($"{v.X}, {v.Y}");
+            }
+            else if (value is SFML.Graphics.Color c)
+            {
+                writer.WriteString($"{c.R}, {c.G}, {c.B}, {c.A}");
+            }
+            else if(value is Transform t)
+            {
+                WriteElement(writer, "Position", $"{t.Position.X}, {t.Position.Y}");
+                WriteElement(writer, "Rotation", t.Rotation.ToString());
+                WriteElement(writer, "Scale", $"{t.Scale.X}, {t.Scale.Y}");
+            }
+            else
+            {
+                writer.WriteString(value.ToString());
+            }
+            
             writer.WriteEndElement();
+        }
+
+        private static void WriteElement(XmlWriter writer, string property, string value)
+        {
+            writer.WriteStartElement(property);
+            writer.WriteString(value);
+            writer.WriteEndElement();
+        }
+
+
+        private static void VerifyProjectDirectories()
+        {
+
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using Engine.Core.EntityComponentSystem;
 using Engine.Core.Input;
 using Engine.Core.SceneManagement;
 using Engine.Physics;

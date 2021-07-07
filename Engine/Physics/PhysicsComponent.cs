@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
 using Engine.Core;
-using SFML.System;
-using MathNet.Numerics;
 using System.Xml;
 
 namespace Engine.Physics
@@ -92,11 +85,6 @@ namespace Engine.Physics
         }
 
         public override void Update()
-        {
-            
-        }
-
-        public override void WriteComponent(XmlWriter writer)
         {
             
         }

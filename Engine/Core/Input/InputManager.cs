@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Security.Cryptography.X509Certificates;
-using Engine.Core.EntityComponentSystem;
 using SFML.Window;
 
 namespace Engine.Core.Input
@@ -130,7 +129,10 @@ namespace Engine.Core.Input
 
             foreach (var component in _inputComponents)
             {
-                component.Update();
+                if (component.IsActive)
+                {
+                    component.Update();
+                }
             }
         }
 

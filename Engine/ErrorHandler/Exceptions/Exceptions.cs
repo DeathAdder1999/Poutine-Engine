@@ -55,4 +55,22 @@ namespace Engine.ErrorHandler
 
     #endregion
 
+    #region FATAL
+
+    public class AssemblyNotFoundException : ExceptionBase
+    {
+        public AssemblyNotFoundException(string msg = "") : base(Severity.FATAL, msg) { }
+    }
+
+    public class TypeNotFoundException : ExceptionBase
+    {
+        public TypeNotFoundException(string msg = "") : base(Severity.FATAL, msg) { }
+    }
+
+    public class CorruptedFileException : ExceptionBase
+    {
+        public CorruptedFileException(string msg = "") : base(Severity.FATAL, msg) { }
+    }
+    #endregion
+
 }

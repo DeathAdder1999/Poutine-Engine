@@ -5,30 +5,50 @@ namespace Engine.Core.SceneManagement
 {
     public class Scene
     {
+        private List<GameObjectReference> _childrenRefs;
+
+        private bool _isActive;
+
+
         public string Name { get; set; }
         public string Path { get; set; }
         public bool IsLoaded { get; private set; } = false;
         public bool IsDirty { get; set; } = false;
+        public bool IsActive
+        {
+            get => _isActive;
+            set
+            {
+                if(_isActive == value)
+                {
+                    return;
+                }
+
+                foreach(var childRef in _childrenRefs)
+                {
+                    var gameObject = GameObjectManager.Instance.Get(childRef);
+                    gameObject.IsActive = value;
+                }
+            }
+        }
 
         //TODO dict???
-        public List<GameObject> Children => _children.Copy();
-
-        private List<GameObject> _children;
+        public List<GameObjectReference> ChildrenRefs => _childrenRefs.Copy();
 
         public Scene(string name)
         {
             Name = name;
-            _children = new List<GameObject>();
+            _childrenRefs = new List<GameObjectReference>();
         }
 
         public void AddChild(GameObject child)
         {
-            if (_children.Contains(child))
+            if (_childrenRefs.Contains(child.Reference))
             {
                 throw new DuplicateException("GameObject is already in Scene hierarchy.");
             }
 
-            _children.Add(child);
+            _childrenRefs.Add(child.Reference);
         }
 
         public void AddChildren(IEnumerable<GameObject> children)
@@ -37,14 +57,6 @@ namespace Engine.Core.SceneManagement
             {
                 AddChild(child);
             }
-        }
-
-        /// <summary>
-        /// Loads all of the contents into the scene
-        /// </summary>
-        public void Load()
-        {
-            
         }
     }
 }
