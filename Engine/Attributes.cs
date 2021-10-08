@@ -3,11 +3,11 @@
 namespace Engine
 {
     /// <summary>
-    /// Attribute for indicating that property is not persistent.
-    /// Will be ignored when saving game data.
+    /// Attribute for indicating that property is persistent.
+    /// Will saved when saving game data.
     /// </summary>
-   [AttributeUsage(AttributeTargets.Property)]
-   class RuntimeProperty : Attribute
-   {
-   }
+    [AttributeUsage(AttributeTargets.Property)]
+    class PersistentProperty : Attribute
+    {
+    }
 }

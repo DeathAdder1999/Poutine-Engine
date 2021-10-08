@@ -4,6 +4,7 @@ using System.Xml;
 using System.Collections.Generic;
 using Engine.Core.SceneManagement;
 using Engine.Core;
+using Engine.Render.Shapes;
 
 namespace Engine.IO
 {
@@ -52,9 +53,7 @@ namespace Engine.IO
             writer.WriteAttributeString("parentId", gameObject.Parent?.Reference.Reference);
             writer.WriteAttributeString("name", gameObject.Name);
 
-            var toIgnore = new List<string>() { "Reference", "Parent", "Name" };
-
-            WriteObject(writer, gameObject, toIgnore);
+            WriteObject(writer, gameObject);
 
             writer.WriteStartElement("Components");
 
@@ -99,11 +98,15 @@ namespace Engine.IO
             {
                 writer.WriteString($"{c.R}, {c.G}, {c.B}, {c.A}");
             }
-            else if(value is Transform t)
+            else if (value is Transform t)
             {
                 WriteElement(writer, "Position", $"{t.Position.X}, {t.Position.Y}");
                 WriteElement(writer, "Rotation", t.Rotation.ToString());
                 WriteElement(writer, "Scale", $"{t.Scale.X}, {t.Scale.Y}");
+            }
+            else if (value is ShapeBase)
+            {
+                WriteObject(writer, value);
             }
             else
             {

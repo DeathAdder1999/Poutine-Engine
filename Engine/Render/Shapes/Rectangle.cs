@@ -15,6 +15,7 @@ namespace Engine.Render.Shapes
         private float _x;
         private float _y;
 
+        [PersistentProperty]
         public float Width
         {
             get => _width;
@@ -26,6 +27,7 @@ namespace Engine.Render.Shapes
             }
         }
 
+        [PersistentProperty]
         public float Height
         {
             get => _height;
@@ -37,6 +39,7 @@ namespace Engine.Render.Shapes
             }
         }
 
+        [PersistentProperty]
         public float X
         {
             get => _x;
@@ -48,6 +51,7 @@ namespace Engine.Render.Shapes
             }
         }
 
+        [PersistentProperty]
         public float Y
         {
             get => _y;

@@ -12,18 +12,25 @@ namespace Engine.Physics
         private Vector2 _velocity;
         private float _angularVelocity;
 
+        [PersistentProperty]
         public bool UseGravity { get; set; }
 
+        [PersistentProperty]
         public bool FreezeX { get; set; }
 
+        [PersistentProperty]
         public bool FreezeY { get; set; }
 
+        [PersistentProperty]
         public bool FreezeRotation { get; set; }
 
+        [PersistentProperty]
         public bool DetectCollisions { get; set; }
 
+        [PersistentProperty]
         public float Mass { get; set; } = 1.0f;
 
+        [PersistentProperty]
         public Vector2 Velocity
         {
             get => _velocity;
@@ -54,12 +61,16 @@ namespace Engine.Physics
             }
         }
 
+        [PersistentProperty]
         public Vector2 ConstraintsX { get; set; } = new Vector2(float.NegativeInfinity, float.PositiveInfinity);
 
+        [PersistentProperty]
         public Vector2 ConstraintsY { get; set; } = new Vector2(float.PositiveInfinity, float.NegativeInfinity);
 
+        [PersistentProperty]
         public Vector2 ConstraintsRotation { get; set; } = new Vector2(float.NegativeInfinity, float.PositiveInfinity);
 
+        [PersistentProperty]
         public float AngularVelocity
         {
             get => _angularVelocity;

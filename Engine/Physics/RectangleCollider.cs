@@ -11,6 +11,7 @@ namespace Engine.Physics
         private float _x = 0;
         private float _y = 0;
 
+        [PersistentProperty]
         public float Width
         {
             get => _width;
@@ -21,6 +22,7 @@ namespace Engine.Physics
             }
         }
 
+        [PersistentProperty]
         public float Height
         {
             get => _height;
@@ -31,6 +33,7 @@ namespace Engine.Physics
             }
         }
 
+        [PersistentProperty]
         public float X
         {
             get => _x;
@@ -41,6 +44,7 @@ namespace Engine.Physics
             }
         }
 
+        [PersistentProperty]
         public float Y
         {
             get => _y;
@@ -60,6 +64,11 @@ namespace Engine.Physics
             Y = y;
             Width = width;
             Height = height;
+        }
+
+        public RectangleCollider() : this(0, 0, 1, 1)
+        {
+
         }
     }
 }

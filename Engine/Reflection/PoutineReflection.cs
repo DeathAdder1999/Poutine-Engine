@@ -30,5 +30,23 @@ namespace Engine.Reflection
 
             return Activator.CreateInstance(type, args);
         }
+
+        public static void SetProperties(object o, Dictionary<string, object> properties)
+        {
+            var type = o.GetType();
+            
+            foreach (var property in properties)
+            {
+                var prop = type.GetProperty(property.Key);
+                prop.SetValue(o, property.Value);
+            }
+        }
+
+        public static void SetProperty(object o, string propertyName, object propertyValue)
+        {
+            var type = o.GetType();
+            var prop = type.GetProperty(propertyName);
+            prop.SetValue(o, propertyValue);
+        }
     }
 }

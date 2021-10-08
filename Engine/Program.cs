@@ -76,7 +76,7 @@ namespace Engine
             GameObjectManager.Instance.Add(r, r2, camera);
             */
 
-            SceneManager.Instance.LoadSceneFromPath("C:\\Users\\dqasi\\Documents\\Projects\\Poutine-Engine\\Engine\\bin\\Debug\\SampleScene.poutine");
+            SceneManager.Instance.LoadSceneFromPath("C:\\Users\\Owner\\Documents\\Projects\\Poutine-Engine\\Engine\\bin\\Debug\\SampleScene.poutine");
 
             engine.Start(); 
         }

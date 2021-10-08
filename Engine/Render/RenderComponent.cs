@@ -12,8 +12,10 @@ namespace Engine.Render
     {
         public Sprite Sprite { get; set; }
 
+        [PersistentProperty]
         public ShapeBase Shape { get; set; }
 
+        [PersistentProperty]
         public Color Color { get; set; }
 
         public RenderComponent()

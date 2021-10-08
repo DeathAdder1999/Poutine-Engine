@@ -16,5 +16,13 @@ public static class Utils
     {
         return (long) (DateTime.UtcNow - Epoch).TotalMilliseconds;
     }
+
+    public static Vector2 GetVector2FromString(string sVector)
+    {
+        var values = sVector.Split(',');
+        var vector = new Vector2(int.Parse(values[0]), int.Parse(values[1]));
+
+        return vector;
+    }
 }
 

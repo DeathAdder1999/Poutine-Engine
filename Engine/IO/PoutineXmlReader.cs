@@ -89,28 +89,6 @@ namespace Engine.IO
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
-
-        class XmlScope
-        {
-            private int _scopeDepth = 0;
-
-            public bool IsOuterScope => _scopeDepth == 0;
-
-            public void Increase()
-            {
-                _scopeDepth++;
-            }
-
-            public void Decrease()
-            {
-                if(IsOuterScope)
-                {
-                    throw new IllegalOperationException("Cannot go out of the moustouter scope!");
-                }
-
-                _scopeDepth--;
-            }
-        }
     }
 
     public class PoutineXmlElement

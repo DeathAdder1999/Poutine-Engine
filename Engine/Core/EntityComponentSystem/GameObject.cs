@@ -16,6 +16,7 @@ namespace Engine.Core
     {
         private bool _isActive;
 
+        [PersistentProperty]
         public string Name { get; set; }
 
         public GameObjectReference Reference { get; }
@@ -41,18 +42,17 @@ namespace Engine.Core
             }
         }
 
+        [PersistentProperty]
         public bool IsStatic { get; set; }
 
+        [PersistentProperty]
         public string Tag { get; set; } = string.Empty;
 
         #region Runtime Properties
-        [RuntimeProperty]
         public bool Disposed { get; private set; }
 
-        [RuntimeProperty]
         public bool IsDirty { get; set; }
 
-        [RuntimeProperty]
         public bool IsSelected { get; set; }
         #endregion
 
@@ -62,6 +62,7 @@ namespace Engine.Core
 
         private List<IComponent> _components = new List<IComponent>();
 
+        [PersistentProperty]
         public Transform Transform { get; set; }
 
         #endregion

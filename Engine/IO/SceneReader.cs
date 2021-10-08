@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Engine.Core.SceneManagement;
 using Engine.Core;
+using Engine.Core.SceneManagement;
+using Engine.Core.Input;
 using Engine.Reflection;
-
+using Engine.Render;
+using Engine.Physics;
 
 namespace Engine.IO
 {
@@ -83,12 +85,69 @@ namespace Engine.IO
 
         private static Transform ParseXmlTransform(PoutineXmlElement element)
         {
-            return new Transform();
+            var transform = new Transform();
+
+            foreach (var child in element.Children)
+            {
+                switch (child.Name)
+                {
+                    case "Position":
+                        var position = Utils.GetVector2FromString(child.Value);
+                        transform.Position = position;
+                        break;
+                    case "Scale":
+                        var scale = Utils.GetVector2FromString(child.Value);
+                        transform.Scale = scale;
+                        break;
+                    case "Rotation":
+                        var rotation = float.Parse(child.Value);
+                        transform.Rotation = rotation;
+                        break;
+                }
+            }
+
+
+            return transform;
         }
 
         private static List<IComponent> ParseComponents(PoutineXmlElement element)
         {
-            return new List<IComponent>();
+            var components = new List<IComponent>();
+
+            foreach (var child in element.Children)
+            {
+                components.Add(ParseComponent(child));
+            }
+
+            return components;
+        }
+
+        private static IComponent ParseComponent(PoutineXmlElement element)
+        {
+            IComponent component = null;
+
+            switch (element.Name)
+            {
+                case "RenderComponent":
+                    component = new RenderComponent();
+                    break;
+                case "PhysicsComponent":
+                    component = new PhysicsComponent();
+                    break;
+                case "InputComponent":
+                    component = new InputComponent();
+                    break;
+                case "RectangleCollider":
+                    component = new RectangleCollider();
+                    break;
+            }
+
+            foreach (var child in element.Children)
+            {
+                PoutineReflection.SetProperty(component, child.Name, child.Value);   
+            }
+
+            return component;
         }
 
         private static void OnSceneParsed()

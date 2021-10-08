@@ -68,13 +68,11 @@ public static class Extensions
 
         foreach(var property in properties)
         {
-            if(Attribute.IsDefined(property, typeof(RuntimeProperty)))
+            if(Attribute.IsDefined(property, typeof(PersistentProperty)))
             {
-                continue;
+                var value = property.GetValue(o);
+                dict.Add(property.Name, value);
             }
-
-            var value = property.GetValue(o);
-            dict.Add(property.Name, value);
         }
 
         return dict;
